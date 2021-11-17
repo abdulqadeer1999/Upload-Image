@@ -16,6 +16,7 @@
     <div class="container">
         <h1 class="text-white bg-dark text-center">Registration Form</h1>
 
+
         <div class="col-lg-8 m-auto d-block">
             <form action="upload.php" method="post" enctype="multipart/form-data">
 

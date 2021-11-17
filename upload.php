@@ -24,6 +24,8 @@
       <th>ID</th>
       <th>User Name</th>
       <th>Profile Picture</th>
+
+
       </thead>
 
       <tbody>
@@ -70,32 +72,47 @@ $conn = mysqli_connect($server,$username,$password,$database);
        $destinationfile = 'upload/'.$filename;
        move_uploaded_file($filetemp,$destinationfile);
 
-      $sql =  "INSERT INTO `uploadimage`( `username`, `image`)
+      $sql =  "INSERT INTO uploadimage( username, image)
         VALUES ('$username', '$destinationfile')";
 
         $query = mysqli_query($conn,$sql);
 
         $displayquery = "select * from  uploadimage";
         $querydisplay= mysqli_query($conn,$displayquery);
+
+        // delete query
+
+        // $sql = "DELETE FROM uploadimage WHERE id='" . $_GET["id"] . "'";
+        // $querydisplay= mysqli_query($conn,$displayquery);
+      
+
+
+
+
+
+
         
         // $row = mysqli_num_rows($querydisplay);
 
-        while ($result = mysqli_fetch_array($querydisplay)){
+        $i=0;
+while($result = mysqli_fetch_array($querydisplay)) {
+        // while ($result = mysqli_fetch_array($querydisplay)){
 
         ?>
 
              <tr>
 
-             <td><?php echo $result ['id'] ?></td>
-             <td><?php echo $result ['username'] ?></td>
-             <td> <img src= "<?php echo $result ['image'] ?>" height="100px" width="150px"> </td>
+             <td><?php echo $result ['id']; ?></td>
+             <td><?php echo $result ['username']; ?></td>
+             <td> <img src= "<?php echo $result ['image']; ?>" height="100px" width="150px"> </td>
+            
 
           </tr>
 
 
          <?php
 
-
+     $i++;
 
        }
 
